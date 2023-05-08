@@ -10,13 +10,9 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import './App.css';
 import Trips from './pages/Trips';
 import Stations from './pages/Stations';
-
-
-
+import StationDetails from './pages/StationDetails';
 
 const queryClient = new QueryClient();
-
-
 
 function App() {
  
@@ -32,6 +28,9 @@ function App() {
         </Route>
         <Route path="/stations" exact>
           <Stations />
+        </Route>
+        <Route path="/stations/:asema_id" exact>
+          <StationDetails />
         </Route>
       </Switch>
     )

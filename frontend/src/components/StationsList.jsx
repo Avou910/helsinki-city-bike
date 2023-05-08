@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getStations } from '../api/stations';
 
 const StationsList = () => {
@@ -13,7 +14,7 @@ const StationsList = () => {
     fetchStations();
   }, []);
 
-  
+
   return (
     <table>
     <thead>
@@ -37,7 +38,8 @@ const StationsList = () => {
       {stations.map((station) => (
         <tr key={station.fid}>
           <td>{station.fid}</td>
-          <td>{station.asema_id}</td>
+          <td><Link to={`/stations/${station.asema_id}`}>{station.asema_id}</Link></td>
+          <td>{station.nimi_fin}</td>
           <td>{station.nimi_fin}</td>
           <td>{station.namn_swe}</td>
           <td>{station.name_eng}</td>
