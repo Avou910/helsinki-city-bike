@@ -37,7 +37,7 @@ const StationsList = () => {
       {stations.map((station) => (
         <tr key={station.fid}>
           <td>{station.fid}</td>
-          <td>{station.asema_ID}</td>
+          <td>{station.asema_id}</td>
           <td>{station.nimi_fin}</td>
           <td>{station.namn_swe}</td>
           <td>{station.name_eng}</td>
