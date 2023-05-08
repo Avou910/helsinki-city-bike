@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: database1
+      max_allowed_packet: 200M
+      wait_timeout: 28800
+      MYSQL_SECURE_FILE_PRIV: ""
+    
+    command: --secure-file-priv=""
+
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data:/var/lib/mysql-files
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '8080:8080'
