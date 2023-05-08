@@ -8,7 +8,9 @@ from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import './App.css';
-import Trips from './trips/pages/trips';
+import Trips from './pages/Trips';
+import Stations from './pages/Stations';
+
 
 
 
@@ -27,6 +29,9 @@ function App() {
         </Route>
         <Route path="/trips" exact>
           <Trips />
+        </Route>
+        <Route path="/stations" exact>
+          <Stations />
         </Route>
       </Switch>
     )
