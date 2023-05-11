@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-spacing: 0 10px;
+    border-collapse: separate;
+    margin: 0 auto;
+    font-size: 16px;
+
+  }
+
+
+  th,
+  td {
+    padding: 12px 12px;
+    text-align: left;
+
+  }
+  
+  tr {
+    background-color: rgba(238, 245, 247, 0.658);
+    box-shadow: 0 2px 4px rgba(250, 192, 2, 0.411);
+    margin-bottom: 8px;
+  }
+  
+
+  

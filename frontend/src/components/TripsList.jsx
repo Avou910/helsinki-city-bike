@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Slider from '@material-ui/core/Slider';
 import { getTrips } from '../api/trips';
+import './TripsList.css';
+
 
 const TripsList = () => {
   const [trips, setTrips] = useState([]);
@@ -9,7 +11,6 @@ const TripsList = () => {
 
   const fetchTrips = async () => {
     const data = await getTrips();
-    console.log("chekc cehkc",data)
     setTrips(data);
   };
 

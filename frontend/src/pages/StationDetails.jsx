@@ -1,14 +1,18 @@
 import React from 'react';
 import Header from '../components/Header';
 import StationDetailsItem from '../components/StationDetailsItem';
+import './StationDetails.css';
 
 const StationDetails = () => {
   return (
-    <div>
-      <Header />
-      <h1>Single Station</h1>
+    <div> 
+    <Header/>
+    <div className='station-details-container'>
+      <h1>Station Details</h1>
       <StationDetailsItem />
     </div>
+    </div>
+
   );
 };
 

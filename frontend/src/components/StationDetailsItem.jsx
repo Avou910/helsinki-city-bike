@@ -30,7 +30,6 @@ const StationDetailsItem = () => {
           <th>Name (Swe)</th>
           <th>Name (Eng)</th>
           <th>Osoite</th>
-          <th>Address</th>
           <th>Kaupunki</th>
           <th>Stad</th>
           <th>Operator</th>
@@ -48,7 +47,6 @@ const StationDetailsItem = () => {
           <td>{station.namn_swe}</td>
           <td>{station.name_eng}</td>
           <td>{station.osoite}</td>
-          <td>{station.Adress}</td>
           <td>{station.kaupunki}</td>
           <td>{station.stad}</td>
           <td>{station.operaattor}</td>
