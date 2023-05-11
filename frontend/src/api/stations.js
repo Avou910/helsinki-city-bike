@@ -13,3 +13,12 @@ export const getStations = async () => {
     const data = await res.json();
     return data;
   };
+
+  export const getTripCountById = async ({asema_id}) => {
+    console.log("api id chekc",asema_id)
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/trips/${asema_id}`,
+    );
+    const data = await res.json();
+    return data;
+  };
