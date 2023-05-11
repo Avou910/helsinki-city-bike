@@ -5,13 +5,10 @@ import { getStationById } from '../api/stations';
 
 const StationDetailsItem = () => {
   const { asema_id } = useParams();
-  console.log("asema_id on",asema_id)
-
   const [station, setStation] = useState(null);
 
   const fetchStation = async () => {
     const data = await getStationById({ asema_id });
-    console.log("asema_id ommmmn",asema_id)
     setStation(data);
   };
 
