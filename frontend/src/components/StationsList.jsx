@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getStations } from '../api/stations';
+import Pagination from './Pagination';
+
 
 const StationsList = () => {
   const [stations, setStations] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 15; 
 
   const fetchStations = async () => {
     const data = await getStations();
@@ -14,12 +19,20 @@ const StationsList = () => {
     fetchStations();
   }, []);
 
+  const handlePageChange = (selectedPage) => {
+    setCurrentPage(selectedPage);
+  };
+
+  const totalItems = stations.length;
+  const offset = currentPage * itemsPerPage;
+  const paginatedStations = stations.slice(offset, offset + itemsPerPage);
+
 
   return (
+    <div>
     <table>
     <thead>
       <tr>
-        <th>FID</th>
         <th>Asema ID</th>
         <th>Name (Fin)</th>
         <th>Name (Swe)</th>
@@ -30,9 +43,8 @@ const StationsList = () => {
       </tr>
     </thead>
     <tbody>
-      {stations.map((station) => (
+      {paginatedStations.map((station) => (
         <tr key={station.fid}>
-          <td>{station.fid}</td>
           <td><Link to={`/stations/${station.asema_id}`}>{station.asema_id}</Link></td>
           <td>{station.nimi_fin}</td>
           <td>{station.namn_swe}</td>
@@ -44,6 +56,9 @@ const StationsList = () => {
       ))}
     </tbody>
   </table>
+
+<Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
+</div>
   );
 };
 

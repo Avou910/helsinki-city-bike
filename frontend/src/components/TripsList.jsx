@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Slider from '@material-ui/core/Slider';
 import { getTrips } from '../api/trips';
+import Pagination from './Pagination';
 import './TripsList.css';
 
 
 const TripsList = () => {
   const [trips, setTrips] = useState([]);
   const [distanceFilter, setDistanceFilter] = useState([0, 100]);
-  const [durationFilter, setDurationFilter] = useState([0, 120]);
+  const [durationFilter, setDurationFilter] = useState([0, 100]);
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 15; 
 
   const fetchTrips = async () => {
     const data = await getTrips();
@@ -45,6 +49,14 @@ const TripsList = () => {
     setDurationFilter(newValue);
   };
 
+  const handlePageChange = (selectedPage) => {
+    setCurrentPage(selectedPage);
+  };
+
+  const totalItems = trips.length;
+  const offset = currentPage * itemsPerPage;
+  const paginatedTrips = trips.slice(offset, offset + itemsPerPage);
+
   return (
     <div>
       <div>
@@ -65,7 +77,7 @@ const TripsList = () => {
           </tr>
         </thead>
         <tbody>
-          {trips.filter(filterTrips).map((trip) => (
+          {paginatedTrips.filter(filterTrips).map((trip) => (
             <tr key={trip.id}>
               <td>{trip.departure_station_name}</td>
               <td>{trip.return_station_name}</td>
@@ -75,6 +87,10 @@ const TripsList = () => {
           ))}
         </tbody>
       </table>
+
+
+      <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
+    
     </div>
   );
 };
