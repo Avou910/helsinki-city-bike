@@ -53,4 +53,4 @@ npm install
 npm run dev
  ```
  
- Access the web application: Once the backend and frontend are running, access the web application through the provided URL or localhost.
+ Access the web application: Once the backend and frontend are running, access the web application through the localhost.
