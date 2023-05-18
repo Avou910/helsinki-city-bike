@@ -16,7 +16,6 @@ const getStations = async (req, res) => {
     try {
         const asema_id = parseInt(req.params.asema_id);
         const response = await stations.findById(asema_id);
-        console.log("waht we get",response)
       if(response) {
         res.send(response);
       }

@@ -6,7 +6,7 @@ const stations = {
         if(err) {
           return reject(err);
         }
-        connection.query('SELECT * FROM stations LIMIT 100', (err, result) => {
+        connection.query('SELECT * FROM stations', (err, result) => {
           connection.release();
           if(err) {
             return reject(err);
@@ -17,7 +17,6 @@ const stations = {
     }),
 
     findById: (asema_id) => new Promise((resolve, reject) => {
-        console.log("asema_id on",asema_id)
         pool.getConnection((err, connection) => {
           if(err) {
             return reject(err);

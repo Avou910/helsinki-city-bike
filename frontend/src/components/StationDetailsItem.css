@@ -1,0 +1,15 @@
+.station-details-container {
+    justify-content: center;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; 
+  }
+  

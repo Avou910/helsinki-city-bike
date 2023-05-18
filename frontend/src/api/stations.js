@@ -6,7 +6,6 @@ export const getStations = async () => {
   };
   
   export const getStationById = async ({asema_id}) => {
-    console.log("api id chekc",asema_id)
     const res = await fetch(
       `${import.meta.env.VITE_API_URL}/api/stations/${asema_id}`,
     );
@@ -15,7 +14,6 @@ export const getStations = async () => {
   };
 
   export const getTripCountById = async ({asema_id}) => {
-    console.log("api id chekc",asema_id)
     const res = await fetch(
       `${import.meta.env.VITE_API_URL}/api/trips/${asema_id}`,
     );

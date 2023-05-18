@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Map from '../components/Map';
 import { getStationById, getTripCountById } from '../api/stations';
+import './StationDetailsItem.css';
+
 
 
 const StationDetailsItem = () => {
@@ -11,8 +14,6 @@ const StationDetailsItem = () => {
 
   const fetchStation = async () => {
     const data = await getStationById({ asema_id });
-    console.log("station",data)
-
     setStation(data);
   };
 
@@ -22,7 +23,6 @@ const StationDetailsItem = () => {
 
   const fetchTripCount = async () => {
     const data = await getTripCountById({ asema_id });
-    console.log("tripcount chekc",data)
     setTripCount(data);
   };
 
@@ -30,11 +30,17 @@ const StationDetailsItem = () => {
     fetchTripCount();
   }, []);
 
+
   if (!station || !tripCount) {
     return <div>Loading...</div>;
   }
 
+
+  const selectedStation = station[0];
+
+
   return (
+    <div className='station-details-container'>
     <table>
       <thead>
         <tr>
@@ -52,8 +58,6 @@ const StationDetailsItem = () => {
           <th>Longitude</th>
           <th>Ended trips</th>
           <th>Started trips</th>
-
-
         </tr>
       </thead>
       <tbody>
@@ -69,15 +73,24 @@ const StationDetailsItem = () => {
           <td>{station.stad}</td>
           <td>{station.operaattor}</td>
           <td>{station.kapasiteet}</td>
-          <td>{station.x_coordinate}</td>
           <td>{station.y_coordinate}</td>
+          <td>{station.x_coordinate}</td>
           <td>{tripCount[index].returned_trips_count}</td>
           <td>{tripCount[index].departure_trips_count}</td>
-
         </tr>
       ))}
       </tbody>
     </table>
+
+    <div className='map-container'>
+
+    {selectedStation.y_coordinate && selectedStation.x_coordinate && (
+    <Map latitude={selectedStation.y_coordinate} longitude={selectedStation.x_coordinate} />
+    )}
+
+</div>
+
+    </div>
   );
 };
 
