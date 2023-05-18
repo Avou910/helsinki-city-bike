@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+//import Card from '@mui/material/Card';
 import Map from '../components/Map';
+import LoadingScreen from '../components/LoadingScreen';
 import { getStationById, getTripCountById } from '../api/stations';
 import './StationDetailsItem.css';
 
@@ -32,7 +34,9 @@ const StationDetailsItem = () => {
 
 
   if (!station || !tripCount) {
-    return <div>Loading...</div>;
+      return <div>
+      <LoadingScreen />
+      </div>;
   }
 
 
@@ -82,13 +86,13 @@ const StationDetailsItem = () => {
       </tbody>
     </table>
 
+  
     <div className='map-container'>
-
     {selectedStation.y_coordinate && selectedStation.x_coordinate && (
     <Map latitude={selectedStation.y_coordinate} longitude={selectedStation.x_coordinate} />
     )}
-
 </div>
+
 
     </div>
   );
