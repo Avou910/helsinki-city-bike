@@ -5,22 +5,98 @@
     height: 20vh;
   }
   
-  .loading {
-    width: 50px;
-    height: 50px;
-    background-color:#007AC9ff;
-    border-radius: 50px;
+  .wheel {
     position: relative;
-    animation-name: animation;
-    animation-duration: 0.5s;
+    height: 100px;
+    width: 100px;
+    border-radius: 100px;
+    background-color:rgb(255, 255, 255);
+    border: 10px solid rgb(0, 0, 0);
+    animation: move 3s infinite linear;
+    
   }
   
+  .spoke {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: top;
+    width: 2px;
+    height: 50%;
+    background-color: rgb(173, 173, 173);
+    transform: translateX(-50%);
+  }
+  
+  .spoke::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: inherit;
+    transform-origin: bottom;
+    transform: translateX(-50%);
+  }
 
+  .spoke-1 {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  
+  .spoke-2 {
+    transform: translateX(-50%) rotate(60deg);
+  }
+  
+  .spoke-3 {
+    transform: translateX(-50%) rotate(120deg);
+  }
+  
+  .spoke-4 {
+    transform: translateX(-50%) rotate(180deg);
+  }
+  
+  .spoke-5 {
+    transform: translateX(-50%) rotate(240deg);
+  }
+  
+  .spoke-6 {
+    transform: translateX(-50%) rotate(300deg);
+  }
 
-  @keyframes animation {
-    0%   {background-color:#007AC9ff; left:0px; top:0px;}
-    25%  {background-color:#007AC9ff; left:200px; top:0px;}
-    50%  {background-color:#007AC9ff; left:200px; top:200px;}
-    75%  {background-color:#007AC9ff; left:0px; top:200px;}
-    100% {background-color:#007AC9ff; left:0px; top:0px;}
+  
+  
+  @keyframes move {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(36deg);
+    }
+    20% {
+      transform: rotate(72deg);
+    }
+    30% {
+      transform: rotate(108deg);
+    }
+    40% {
+      transform: rotate(144deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    60% {
+      transform: rotate(216deg);
+    }
+    70% {
+      transform: rotate(252deg);
+    }
+    80% {
+      transform: rotate(288deg);
+    }
+    90% {
+      transform: rotate(324deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
