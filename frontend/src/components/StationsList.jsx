@@ -58,6 +58,7 @@ const StationsList = () => {
   </table>
 
 <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} onPageChange={handlePageChange} />
+
 </div>
   );
 };

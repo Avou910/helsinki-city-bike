@@ -11,7 +11,7 @@
     width: 100px;
     border-radius: 100px;
     background-color:rgb(255, 255, 255);
-    border: 10px solid rgb(0, 0, 0);
+    border: 10px solid rgba(0, 0, 0, 0.884);
     animation: move 3s infinite linear;
     
   }

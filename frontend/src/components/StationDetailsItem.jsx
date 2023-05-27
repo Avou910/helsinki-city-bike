@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-//import Card from '@mui/material/Card';
 import Map from '../components/Map';
 import LoadingScreen from '../components/LoadingScreen';
 import { getStationById, getTripCountById } from '../api/stations';
@@ -12,6 +11,7 @@ const StationDetailsItem = () => {
   const { asema_id } = useParams();
   const [station, setStation] = useState(null);
   const [tripCount, setTripCount] = useState(null);
+ 
 
 
   const fetchStation = async () => {
@@ -43,8 +43,11 @@ const StationDetailsItem = () => {
   const selectedStation = station[0];
 
 
+
   return (
     <div className='station-details-container'>
+    
+      
     <table>
       <thead>
         <tr>

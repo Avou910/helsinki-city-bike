@@ -4,14 +4,27 @@ import './Header.css'
 
 function Header() {
   return (
+
+    <div class="header-container">
+
     <div className="header">
-      <Link to="/trips">
-        <button className='header-buttons'>Trips List</button>
+
+      <h1 className='header1'>Helsinki City Bike</h1>
+    </div>
+
+
+      <div class="header-buttons">
+
+      <Link to="/trips" style={{ textDecoration: 'none' }}>
+        <button> Trips List </button>
       </Link>
-      <Link to="/stations">
-        <button className='header-buttons'>Stations List</button>
+      <Link to="/stations" style={{ textDecoration: 'none' }}>
+        <button> Stations List </button>
       </Link>
     </div>
+    </div>
+    
+
   );
 }
 
