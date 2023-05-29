@@ -39,65 +39,91 @@ const StationDetailsItem = () => {
       </div>;
   }
 
-
-  const selectedStation = station[0];
-
-
+  const fetchedStation = station[0];
+  const fetchedTripCount = tripCount[0]
 
   return (
     <div className='station-details-container'>
+
+      <div className='details-header'>
+
+      <h1>{fetchedStation.nimi_fin} - {fetchedStation.kaupunki} </h1>
+      <h1>{fetchedStation.namn_swe} - {fetchedStation.stad}</h1>
+      <h3>Operated by: {fetchedStation.operaattor}</h3>
+
+      </div>
+   
+
+    <div className='map-data-table-container'>
     
-      
-    <table>
+    <table className='data-table'>
       <thead>
+      <tr>
+      <th colSpan="2" style={{ textAlign: 'center' }}>
+        <h2>Station data</h2>
+      </th>
+    </tr>
         <tr>
-          <th>FID</th>
-          <th>Asema ID</th>
-          <th>Name (Fin)</th>
-          <th>Name (Swe)</th>
-          <th>Name (Eng)</th>
-          <th>Osoite</th>
-          <th>Kaupunki</th>
-          <th>Stad</th>
-          <th>Operator</th>
-          <th>Capacity</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
-          <th>Ended trips</th>
-          <th>Started trips</th>
+          <th>Feature</th>
+          <th>Statistic</th>
         </tr>
       </thead>
       <tbody>
-      {station.map((station,index) => (
-          <tr key={station.fid}>
-          <td>{station.fid}</td>
-          <td>{station.asema_id}</td>
-          <td>{station.nimi_fin}</td>
-          <td>{station.namn_swe}</td>
-          <td>{station.name_eng}</td>
-          <td>{station.osoite}</td>
-          <td>{station.kaupunki}</td>
-          <td>{station.stad}</td>
-          <td>{station.operaattor}</td>
-          <td>{station.kapasiteet}</td>
-          <td>{station.y_coordinate}</td>
-          <td>{station.x_coordinate}</td>
-          <td>{tripCount[index].returned_trips_count}</td>
-          <td>{tripCount[index].departure_trips_count}</td>
-        </tr>
-      ))}
+      <tr>
+          <th>Capacity</th>
+          <td>{fetchedStation.kapasiteet}</td>
+      </tr>
+      <tr>
+          <th>Trips started from this station</th>
+          <td>{fetchedTripCount.departure_trips_count}</td>
+      </tr>
+      <tr>
+          <th>Trips ended to this station</th>
+          <td>{fetchedTripCount.returned_trips_count}</td>
+      </tr>
+
+
       </tbody>
     </table>
 
-  
-    <div className='map-container'>
-    {selectedStation.y_coordinate && selectedStation.x_coordinate && (
-    <Map latitude={selectedStation.y_coordinate} longitude={selectedStation.x_coordinate} />
+    <table className='data-table'>
+      <thead>
+      <tr>
+      <th colSpan="2" style={{ textAlign: 'center' }}>
+        <h2>Station data</h2>
+      </th>
+    </tr>
+        <tr>
+          <th>Feature</th>
+          <th>Statistic</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+          <th>Capacity</th>
+          <td>{fetchedStation.kapasiteet}</td>
+      </tr>
+      <tr>
+          <th>Trips started from this station</th>
+          <td>{fetchedTripCount.departure_trips_count}</td>
+      </tr>
+      <tr>
+          <th>Trips ended to this station</th>
+          <td>{fetchedTripCount.returned_trips_count}</td>
+      </tr>
+
+
+      </tbody>
+    </table>
+
+    {fetchedStation.y_coordinate && fetchedStation.x_coordinate && (
+    <Map latitude={fetchedStation.y_coordinate} longitude={fetchedStation.x_coordinate} />
     )}
+
 </div>
 
+</div>
 
-    </div>
   );
 };
 

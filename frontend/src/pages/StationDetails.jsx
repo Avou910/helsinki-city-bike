@@ -9,7 +9,6 @@ const StationDetails = () => {
     <div> 
     <Header/>
     <div className='station-details-container'>
-      <h1>Station Details</h1>
       <StationDetailsItem />
     </div>
     </div>

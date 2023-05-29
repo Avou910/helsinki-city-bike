@@ -1,22 +1,44 @@
 .station-details-container {
-    justify-content: center;
-    align-items: center;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .map-container {
-  display: flex;
+  background-color: rgb(240, 240, 240);
   justify-content: center;
   align-items: center;
-  height: 50vh; 
-  }
+  max-width: 1800px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 20px  300px rgba(175, 175, 175, 0.37);
 
-  .card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh; 
-    }
-  
+}
+
+.details-header {
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.main-table {
+  color: rgb(0, 0, 0);
+  display: flex;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.map-data-table-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+
+.data-table {
+  color: rgb(0, 0, 0);
+  align-items: center;
+  padding: 1rem;
+  max-width: 500px;
+}
+
+
+
