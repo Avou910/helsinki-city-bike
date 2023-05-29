@@ -4,6 +4,14 @@ export const getStations = async () => {
     );
     return await res.json();
   };
+
+  export const getTrips = async () => {
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/trips`
+    );
+    return await res.json();
+  };
+  
   
   export const getStationById = async ({asema_id}) => {
     const res = await fetch(
@@ -13,10 +21,22 @@ export const getStations = async () => {
     return data;
   };
 
-  export const getTripCountById = async ({asema_id}) => {
+  export const getDataById = async ({asema_id}) => {
     const res = await fetch(
       `${import.meta.env.VITE_API_URL}/api/trips/${asema_id}`,
     );
     const data = await res.json();
     return data;
   };
+
+  export const getTopStationsById = async ({asema_id}) => {
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/trips/${asema_id}`,
+    );
+    const data = await res.json();
+    return data;
+  };
+
+
+  
+  

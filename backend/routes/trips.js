@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const { getTrips, getTripCountById } = require ('../controllers/trips');
+const { getTrips, getDataById} = require ('../controllers/trips');
 
 
 router.get('/', getTrips);
-router.get('/:asema_id', getTripCountById);
+router.get('/:asema_id', getDataById);
+
+
 
 
 module.exports = router;

@@ -12,21 +12,25 @@ const getTrips = async (req, res) => {
     }
   };
 
-  const getTripCountById = async (req, res) => {
+  const getDataById = async (req, res) => {
     try {
         const asema_id = parseInt(req.params.asema_id);
-        const response = await trips.findById(asema_id);
-        console.log("waht we get",response)
-      if(response) {
-        res.send(response);
-      }
+        const data = await trips.findDataById(asema_id);
+        const topStations = await trips.findTopStationsById(asema_id);
+
+        console.log("stats:", data);
+        console.log("Top Stations:", topStations);
+        res.json({ data: data, topStations: topStations });
+      
     } catch (err) {
       console.log(err);
       res.status(500).send("Something went wrong");
     }
   };
 
+
   module.exports = {
     getTrips,
-    getTripCountById
+    getDataById,
+    
   }

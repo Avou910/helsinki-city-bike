@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Slider from '@material-ui/core/Slider';
-import { getTrips } from '../api/trips';
+import { getTrips } from '../api/ApiCalls';
 import Pagination from './Pagination';
 import './TripsList.css';
 
