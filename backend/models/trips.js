@@ -47,7 +47,7 @@ const trips = {
           return reject(err);
         }
         connection.query(
-          'SELECT departure_station_name, COUNT(*) AS trip_count FROM trips WHERE return_station_id = ? GROUP BY departure_station_name ORDER BY trip_count DESC LIMIT 5;',
+          'SELECT departure_station_id, departure_station_name, COUNT(*) AS trip_count FROM trips WHERE return_station_id = ? GROUP BY departure_station_id, departure_station_name ORDER BY trip_count DESC LIMIT 5;',
           [asema_id],
           (err, result) => {
             connection.release();
@@ -66,7 +66,7 @@ const trips = {
           return reject(err);
         }
         connection.query(
-          'SELECT return_station_name, COUNT(*) AS trip_count FROM trips WHERE departure_station_id = ? GROUP BY return_station_name ORDER BY trip_count DESC LIMIT 5;',
+          'SELECT return_station_id, return_station_name, COUNT(*) AS trip_count FROM trips WHERE departure_station_id = ? GROUP BY return_station_id, return_station_name ORDER BY trip_count DESC LIMIT 5;',
           [asema_id],
           (err, result) => {
             connection.release();

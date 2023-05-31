@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Map from '../components/Map';
 import LoadingScreen from '../components/LoadingScreen';
 import { getStationById, getDataById, getTopStationsById } from '../api/ApiCalls';
@@ -11,35 +11,37 @@ const StationDetailsItem = () => {
   const { asema_id } = useParams();
   const [station, setStation] = useState(null);
   const [Data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-
+  
   const fetchStation = async () => {
     const data = await getStationById({ asema_id });
     setStation(data);
   };
 
-  useEffect(() => {
-    fetchStation();
-  }, []);
-
   const fetchData = async () => {
     const data = await getDataById({ asema_id });
     setData(data);
+
   };
 
   useEffect(() => {
+    fetchStation();
     fetchData();
-  }, []);
+  }, [asema_id]);
 
 
-  if (!station || !Data) {
+  if (isLoading || !station || !Data) {
       return <div>
       <LoadingScreen />
       </div>;
   }
 
+
+
+
   const fetchedStation = station[0];
-  const fetchedDataStats = Data.data[0]
+  const fetchedDataStats = Data.data[0];
 
 
   return (
@@ -94,11 +96,12 @@ const StationDetailsItem = () => {
   <table className='data-table'>
     <thead>
     <tr>
-      <th colSpan="2" style={{ textAlign: 'center' }}>
+      <th colSpan="3" style={{ textAlign: 'center' }}>
         <h2>Top 5 Return stations for trips starting from this station</h2>
       </th>
     </tr>
       <tr>
+       <th>Station ID</th>
         <th>Station</th>
         <th>Trip Count</th>
       </tr>
@@ -106,6 +109,7 @@ const StationDetailsItem = () => {
     <tbody>
       {Data.topReturnStations.map((station, index) => (
         <tr key={index}>
+          <td><Link to={`/stations/${station.asema_id}`}>{station.asema_id}</Link></td>
           <td>{station.return_station_name}</td>
           <td>{station.trip_count}</td>
         </tr>
@@ -118,11 +122,12 @@ const StationDetailsItem = () => {
   <table className='data-table'>
     <thead>
     <tr>
-      <th colSpan="2" style={{ textAlign: 'center' }}>
+      <th colSpan="3" style={{ textAlign: 'center' }}>
         <h2>Top 5 Departure Stations for trips ending at this station</h2>
       </th>
     </tr>
       <tr>
+        <th>Station ID</th>
         <th>Station</th>
         <th>Trip Count</th>
       </tr>
@@ -130,6 +135,7 @@ const StationDetailsItem = () => {
     <tbody>
       {Data.topDepartureStations.map((station, index) => (
         <tr key={index}>
+          <td><Link to={`/stations/${station.asema_id}`}>{station.asema_id}</Link></td>
           <td>{station.departure_station_name}</td>
           <td>{station.trip_count}</td>
         </tr>

@@ -33,7 +33,7 @@ const StationsList = () => {
     <table>
     <thead>
       <tr>
-        <th>Asema ID</th>
+        <th>Station ID</th>
         <th>Name (Fin)</th>
         <th>Name (Swe)</th>
         <th>Name (Eng)</th>
