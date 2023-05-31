@@ -12,7 +12,6 @@ function Header() {
       <h1 className='header1'>Helsinki City Bike</h1>
     </div>
 
-
       <div class="header-buttons">
 
       <Link to="/trips" style={{ textDecoration: 'none' }}>
