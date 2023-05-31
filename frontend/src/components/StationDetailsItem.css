@@ -14,23 +14,26 @@
 
 .details-header {
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
-.main-table {
-  color: rgb(0, 0, 0);
-  display: flex;
-  gap: 2rem;
-  margin-top: 4rem;
-}
 
-.map-data-table-container{
+.data-table-container{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
   margin-top: 3rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+}
+
+.map-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 3rem;
+  margin-bottom: 20rem;
 }
 
 .data-table {

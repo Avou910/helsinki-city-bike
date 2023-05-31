@@ -31,7 +31,7 @@ const TripsList = () => {
   };
 
   const filterTrips = (data) => {
-    const distance = data.covered_distance_m / 1000;
+    const distance = data.covered_distance_m / 100;
     const duration = data.duration_sec / 60;
     return (
       distance >= distanceFilter[0] &&

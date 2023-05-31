@@ -16,11 +16,10 @@ const getTrips = async (req, res) => {
     try {
         const asema_id = parseInt(req.params.asema_id);
         const data = await trips.findDataById(asema_id);
-        const topStations = await trips.findTopStationsById(asema_id);
+        const topDepartureStations = await trips.findTopDepartureStations(asema_id);
+        const topReturnStations = await trips.findTopReturnStations(asema_id);
 
-        console.log("stats:", data);
-        console.log("Top Stations:", topStations);
-        res.json({ data: data, topStations: topStations });
+        res.json({ data: data, topDepartureStations: topDepartureStations, topReturnStations: topReturnStations });
       
     } catch (err) {
       console.log(err);

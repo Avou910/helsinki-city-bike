@@ -41,14 +41,33 @@ const trips = {
       });
     }),
 
-    findTopStationsById: (asema_id) => new Promise((resolve, reject) => {
+    findTopDepartureStations: (asema_id) => new Promise((resolve, reject) => {
       pool.getConnection((err, connection) => {
         if (err) {
           return reject(err);
         }
         connection.query(
           'SELECT departure_station_name, COUNT(*) AS trip_count FROM trips WHERE return_station_id = ? GROUP BY departure_station_name ORDER BY trip_count DESC LIMIT 5;',
-          [asema_id,asema_id],
+          [asema_id],
+          (err, result) => {
+            connection.release();
+            if (err) {
+              return reject(err);
+            }
+            resolve(result);
+          }
+        );
+      });
+    }),
+
+    findTopReturnStations: (asema_id) => new Promise((resolve, reject) => {
+      pool.getConnection((err, connection) => {
+        if (err) {
+          return reject(err);
+        }
+        connection.query(
+          'SELECT return_station_name, COUNT(*) AS trip_count FROM trips WHERE departure_station_id = ? GROUP BY return_station_name ORDER BY trip_count DESC LIMIT 5;',
+          [asema_id],
           (err, result) => {
             connection.release();
             if (err) {
