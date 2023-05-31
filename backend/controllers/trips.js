@@ -20,7 +20,6 @@ const getTrips = async (req, res) => {
         const topReturnStations = await trips.findTopReturnStations(asema_id);
 
 
-        // This is done so we access the asema_id directly at the frontend TOP 5 tables
         const newTopDepartureStations = topDepartureStations.map(station => {
           return {
             asema_id: station.departure_station_id,
