@@ -37,8 +37,6 @@ const getTrips = async (req, res) => {
           };
         });
 
-        console.log(newTopDepartureStations)
-        console.log(newTopReturnStations)
 
         res.json({ data: data, topDepartureStations: newTopDepartureStations, topReturnStations: newTopReturnStations });
       
